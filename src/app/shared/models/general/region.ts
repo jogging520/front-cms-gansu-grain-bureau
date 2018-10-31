@@ -7,8 +7,8 @@ export class Region {
   level: string;
   longitude: number;
   latitude: number;
-  createTime: string;
-  timestamp: string;
+  createTime: Date;
+  timestamp: Date;
   status: string;
   serialNo: string;
   description?: string;

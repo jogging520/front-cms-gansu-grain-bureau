@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="head">
+    <img class="logo" src="./assets/logo-color.svg">
+    <span class="title">测试系统</span>
+  </div>
+  <div class="wrap">
+    <div nz-row nzType="flex" nzJustify="center" [nzGutter]="{ xs: 8, sm: 16, md: 24, lg: 32, xl: 32, xxl: 32 }">
+      <div nz-col nzSpan="12" [nzPush]="5">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+  <div class="bottom">北脑出品</div>
+</div>

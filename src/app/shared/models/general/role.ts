@@ -5,8 +5,8 @@ export class Role {
   appTypes: string[];
   category: string;
   permissions: number[];
-  createTime: string;
-  timestamp: string;
+  createTime: Date;
+  timestamp: Date;
   status: string;
   serialNo: string;
   description?: string;

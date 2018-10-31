@@ -5,8 +5,8 @@ export class Strategy {
   appType: string;
   category: string;
   parameters?: object;
-  createTime: string;
-  timestamp: string;
+  createTime: Date;
+  timestamp: Date;
   status: string;
   serialNo: string;
   description?: string;

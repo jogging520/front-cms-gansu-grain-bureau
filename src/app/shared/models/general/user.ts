@@ -17,8 +17,8 @@ export class User {
   mobile?: string;
   email?: string;
   weChat?: string;
-  createTime: string;
-  timestamp: string;
+  createTime: Date;
+  timestamp: Date;
   status: string;
   serialNo: string;
   description?: string;

@@ -70,9 +70,9 @@
       </ng-template>
     </nz-alert>
   </div>
-  <simple-table #st [size]="small" [columns]="columns" [data]="operations" [loading]="loading" (filterChange)="getData()">
+  <st [size]="small" [columns]="columns" [data]="operations" [loading]="loading" (filterChange)="getData()">
     <ng-template st-row="status" let-i>
       <nz-badge [nzStatus]="i.statusType" [nzText]="i.statusText"></nz-badge>
     </ng-template>
-  </simple-table>
+  </st>
 </nz-card>

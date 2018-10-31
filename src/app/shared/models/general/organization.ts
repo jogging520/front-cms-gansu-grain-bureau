@@ -6,8 +6,8 @@ export class Organization {
   category: string;
   region: string;
   parent?: string;
-  createTime: string;
-  timestamp: string;
+  createTime: Date;
+  timestamp: Date;
   status: string;
   serialNo: string;
   description?: string;

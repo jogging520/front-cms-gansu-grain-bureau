@@ -1,6 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import { ModalHelper } from '@delon/theme';
-import { SimpleTableColumn, SimpleTableComponent } from '@delon/abc';
 import {OperationService} from "@shared/services/general/operation.service";
 import {Operation} from "@shared/models/general/operation";
 import {NzMessageService} from "ng-zorro-antd";
@@ -9,6 +8,7 @@ import {CommonService} from "@shared/services/general/common.service";
 import {SystemOperationViewComponent} from "./view/view.component";
 import {ActivatedRoute} from "@angular/router";
 import * as GeneralConstants from "@shared/constants/general/general-constants";
+import {STColumn, STComponent} from "@delon/abc";
 
 @Component({
   selector: 'app-system-operation',
@@ -29,8 +29,9 @@ export class SystemOperationComponent implements OnInit {
   //加载中状态
   loading = false;
 
-  @ViewChild('st') st: SimpleTableComponent;
-  columns: SimpleTableColumn[] = [
+  @ViewChild('st')
+  st: STComponent;
+  columns: STColumn[] = [
     { title: '操作编号', index: 'id' },
     { title: '操作人员',
       index: 'user',

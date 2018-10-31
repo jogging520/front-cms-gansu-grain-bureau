@@ -1,0 +1,63 @@
+@import '~@delon/theme/styles/default';
+:host {
+  ::ng-deep {
+    .container {
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+      background: #f0f2f5;
+    }
+    .wrap {
+      padding: 60px 0;
+      flex: 1;
+    }
+    .ant-form-item {
+      margin-bottom: 24px;
+    }
+    .bottom {
+      padding: 2px 12px 12px 12px;
+      text-align: center;
+    }
+
+    @media (min-width: @screen-md-min) {
+      .container {
+        background: url('/assets/tmp/img/bg1.jpg') no-repeat 50% 50%;
+        background-size: 100% 80%;
+      }
+      .wrap {
+        padding: 100px 0 24px;
+      }
+    }
+    .top {
+      padding: 16px;
+      text-align: center;
+      background: #f0f2f5;
+    }
+    .header {
+      height: 44px;
+      line-height: 44px;
+      background: #f0f2f5;
+      a {
+        text-decoration: none;
+      }
+    }
+    .logo {
+      height: 44px;
+      margin-right: 16px;
+    }
+    .title {
+      font-size: 18px;
+      color: @primary-color;
+      font-family: 'Myriad Pro', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+      font-weight: 600;
+      position: relative;
+      vertical-align: middle;
+    }
+    .desc {
+      font-size: @font-size-base;
+      color: @text-color-secondary;
+      margin-top: 12px;
+      margin-bottom: 40px;
+    }
+  }
+}
