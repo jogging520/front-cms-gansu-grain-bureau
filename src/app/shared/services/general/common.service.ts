@@ -9,7 +9,7 @@ import {environment} from "@env/environment";
 import { v4 as uuid } from 'uuid';
 import {ACLService} from "@delon/acl";
 import {MenuService} from "@delon/theme";
-import {ReuseTabService} from "@delon/abc";
+import {ReuseTabMatchMode, ReuseTabService} from "@delon/abc";
 import * as GeneralConstants from "@shared/constants/general/general-constants";
 
 @Injectable({
@@ -243,5 +243,6 @@ export class CommonService {
     excludes.push(new RegExp(GeneralConstants.CONSTANT_COMMON_ROUTE_PATH_CALL_BACK));
 
     this.reuseTabService.excludes = excludes;
+    this.reuseTabService.mode = ReuseTabMatchMode.URL;
   }
 }
