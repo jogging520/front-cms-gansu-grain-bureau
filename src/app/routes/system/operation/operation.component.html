@@ -38,13 +38,9 @@
         <nz-form-item>
           <nz-form-label nzFor="createTime">更新日期</nz-form-label>
           <nz-form-control>
-            <nz-range-picker
-              [nzShowTime]="{ nzFormat: 'HH:mm' }"
-              nzFormat="yyyy-MM-dd HH:mm"
-              [nzPlaceHolder]="[ '开始日期', '结束日期' ]"
-              (ngModelChange)="onCreateTimeChange($event)"
-              (nzOnOk)="onCreateTimeOk($event)"
-            ></nz-range-picker>
+            <range-picker [(ngModel)]="conditions.fromCreateTime"
+                          [(ngModelEnd)]="conditions.toCreateTime">
+            </range-picker>
           </nz-form-control>
         </nz-form-item>
       </nz-col>

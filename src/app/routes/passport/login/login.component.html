@@ -5,7 +5,7 @@
         <nz-alert *ngIf="error" [nzType]="'error'" [nzMessage]="error" [nzShowIcon]="true" class="mb-lg"></nz-alert>
         <nz-form-item>
           <nz-form-control>
-            <nz-input-group nzSize="large" nzPrefixIcon="anticon anticon-user">
+            <nz-input-group nzSize="large" nzPrefixIcon="user">
               <input nz-input formControlName="userName" placeholder="请输入用户名" (ngModelChange)="onChange($event)">
             </nz-input-group>
             <nz-form-explain *ngIf="userName.dirty && userName.errors">请输入账户名且至少六个字符！</nz-form-explain>
@@ -13,7 +13,7 @@
         </nz-form-item>
         <nz-form-item>
           <nz-form-control>
-            <nz-input-group nzSize="large" nzPrefixIcon="anticon anticon-lock">
+            <nz-input-group nzSize="large" nzPrefixIcon="lock">
               <input nz-input type="password" formControlName="password" placeholder="请输入密码" (ngModelChange)="onChange($event)">
             </nz-input-group>
             <nz-form-explain *ngIf="password.dirty && password.errors">

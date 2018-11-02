@@ -144,28 +144,4 @@ export class SystemOperationComponent implements OnInit {
         }
       )
   }
-
-  /**
-   * 方法：createTime时间提取器点击确认后的事件
-   * @param event 事件
-   */
-  private onCreateTimeOk(event: any): void {
-    this.setConditionTime();
-  }
-
-  /**
-   * 方法：createTime时间提取器时间变更后的事件
-   * @param event 事件
-   */
-  private onCreateTimeChange(event: any): void {
-    this.setConditionTime();
-  }
-
-  /**
-   * 方法：根据事件设置条件中的事件条件
-   */
-  private setConditionTime(): void {
-    this.conditions.fromCreateTime = event[0];
-    this.conditions.toCreateTime = event[1];
-  }
 }

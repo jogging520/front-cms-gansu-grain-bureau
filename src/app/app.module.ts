@@ -9,7 +9,7 @@ import { default as ngLang } from '@angular/common/locales/zh-Hans';
 import { NZ_I18N, zh_CN as zorroLang } from 'ng-zorro-antd';
 import { DELON_LOCALE, zh_CN as delonLang } from '@delon/theme';
 const LANG = {
-  abbr: 'zh-Hans',
+  abbr: 'zh',
   ng: ngLang,
   zorro: zorroLang,
   delon: delonLang,
