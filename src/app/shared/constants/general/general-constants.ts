@@ -16,6 +16,7 @@ export const CONSTANT_COMMON_HTTP_PARAM_PUBLIC_CATEGORY: string                 
 export const CONSTANT_COMMON_HTTP_PARAM_PUBLIC_SESSION: string                         = 'session';    //HTTP请求参数中公共会话编号定义常量
 export const CONSTANT_COMMON_HTTP_PARAM_PUBLIC_USER: string                            = 'user';    //HTTP请求参数中公共用户编号定义常量
 export const CONSTANT_COMMON_HTTP_PARAM_PUBLIC_TOKEN: string                           = 'token';    //HTTP请求参数中公共令牌定义常量
+export const CONSTANT_COMMON_HTTP_PARAM_PUBLIC_POLICY: string                          = 'cms/policies';    //HTTP请求参数中公共用户编号定义常量
 
 export const CONSTANT_COMMON_HTTP_RESPONSE_TYPE_BLOB: 'text' | 'blob' | 'arraybuffer' | 'json'  = 'blob';    //HTTP请求选项中字符流（图片）定义常量
 
