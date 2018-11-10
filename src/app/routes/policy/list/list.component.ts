@@ -22,6 +22,7 @@ export class PolicyListComponent implements OnInit {
   conditions: any = {
 
   };
+  totalReadings: number = 0;
 
   colors: string[] = GeneralConstants.CONSTANT_COMMON_COMPONENT_TAG_COLORS;
 
@@ -53,6 +54,8 @@ export class PolicyListComponent implements OnInit {
               if (policy.author === user.id)
                 policy.author = user.realName;
             });
+
+          this.totalReadings += policy.readings;
           this.policies.push(policy);
         }},
         () => {catchError(error => this.commonService.handleError(error));
