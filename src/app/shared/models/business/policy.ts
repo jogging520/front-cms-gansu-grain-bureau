@@ -6,6 +6,7 @@ export class Policy {
   name: string;
   grade: string;
   keywords: string[];
+  author: string;
   readings: number;
   createTime: Date;
   timestamp: Date;

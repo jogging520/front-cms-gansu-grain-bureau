@@ -1,54 +1,93 @@
-<page-header></page-header>
+<page-header #ph [autoTitle]="false" [autoBreadcrumb]="false" >
+  <h5>展示各类业务操作记录。</h5>
+</page-header>
 <nz-card [nzBordered]="false">
-  <form nz-form se-container="1" size="compact" gutter="32" [labelWidth]="null">
-    <se label="所属类目" line>
-      <tag-select>
-        <nz-tag *ngFor="let i of categories; let idx = index" nzMode="checkable" [nzChecked]="i.value" (nzCheckedChange)="changeCategory($event, idx)">
-          {{i.text}}
-        </nz-tag>
-      </tag-select>
-    </se>
-  </form>
+  <div nz-row>
+    <div nz-col [nzXs]="24" [nzSm]="8" class="header-info">
+      <span class="text-grey-dark">总文章数</span>
+      <span class="d-block display-2">{{policies.length}}</span>
+      <em></em>
+    </div>
+    <div nz-col [nzXs]="24" [nzSm]="8" class="header-info">
+      <span class="text-grey-dark">阅读量</span>
+      <span class="d-block display-2">32分钟</span>
+      <em></em>
+    </div>
+    <div nz-col [nzXs]="24" [nzSm]="8" class="header-info">
+      <span class="text-grey-dark">待发表的文章</span>
+      <span class="d-block display-2">24个任务</span>
+    </div>
+  </div>
 </nz-card>
 <nz-card [nzBordered]="false">
-  <nz-list nzItemLayout="vertical" [nzLoading]="loading" [nzDataSource]="policies" [nzRenderItem]="item" [nzLoadMore]="loadMore">
+  <div class="d-flex align-items-center mb-lg">
+    <h3 class="flex-1 text-lg">文章列表</h3>
+    <div>
+      <nz-radio-group [(ngModel)]="conditions.status" class="mr-md">
+        <label nz-radio-button [nzValue]="'all'">
+          <span>全部</span>
+        </label>
+        <label nz-radio-button [nzValue]="'progress'">
+          <span>进行中</span>
+        </label>
+        <label nz-radio-button [nzValue]="'waiting'">
+          <span>等待中</span>
+        </label>
+      </nz-radio-group>
+      <nz-input-group nzSuffixIcon="anticon anticon-search" style="width: 270px;">
+        <input type="text" nz-input placeholder="请输入" [(ngModel)]="conditions.q" name="q">
+      </nz-input-group>
+    </div>
+  </div>
+  <button nz-button (click)="openEdit()" [nzType]="'dashed'" nzBlock class="mb-sm">
+    <i nz-icon type="plus"></i>
+    <span>新建一篇文章</span>
+  </button>
+  <nz-list [nzDataSource]="policies" [nzLoading]="loading" [nzRenderItem]="item" [nzPagination]="pagination">
     <ng-template #item let-item>
-      <nz-list-item [nzContent]="nzContent" [nzExtra]="nzExtra" [nzActions]="[op1,op2,op3]">
-        <ng-template #op1>
-          <i nz-icon type="star" class="mr-sm"></i>{{item.readings}}</ng-template>
-        <ng-template #op2>
-          <i nz-icon type="like" class="mr-sm"></i>{{item.name}}</ng-template>
-        <ng-template #op3>
-          <i nz-icon type="message" class="mr-sm"></i>{{item.description}}</ng-template>
-        <ng-template #nzExtra>
-          <div style="width: 272px; height: 1px;"></div>
+      <nz-list-item [nzContent]="nzContent" [nzActions]="[edit, op]">
+        <ng-template #edit>
+          <a (click)="openEdit(item)">详细内容</a>
         </ng-template>
-        <nz-list-item-meta [nzTitle]="nzTitle" [nzDescription]="nzDescription">
+        <ng-template #op>
+          <nz-dropdown>
+            <a class="ant-dropdown-link" nz-dropdown>
+              更多
+              <i nz-icon type="down"></i>
+            </a>
+            <ul nz-menu>
+              <li nz-menu-item (click)="edit('编辑：' + item.title)">编辑</li>
+              <li nz-menu-item (click)="msg.success('删除：' + item.title)">删除</li>
+            </ul>
+          </nz-dropdown>
+        </ng-template>
+        <nz-list-item-meta [nzTitle]="nzTitle" [nzDescription]="item.subDescription" [nzAvatar]="nzAvatar">
           <ng-template #nzTitle>
             <a href="{{item.name}}" target="_blank">{{item.name}}</a>
           </ng-template>
-          <ng-template #nzDescription>
-            <nz-tag>Alain</nz-tag>
-            <nz-tag>ng-zorro-antd</nz-tag>
-            <nz-tag>Ant Design</nz-tag>
+          <ng-template #nzAvatar>
+            <nz-avatar [nzSrc]="item.logo" nzSize="large" [nzShape]="'square'"></nz-avatar>
           </ng-template>
         </nz-list-item-meta>
         <ng-template #nzContent>
-          <p>{{item.content}}</p>
-          <div class="mt-md d-flex">
-            <nz-avatar [nzSrc]="item.avatar" [nzSize]="'small'" class="mr-sm"></nz-avatar>
-            <a href="{{item.href}}" target="_blank">{{item.name}}</a>
-            <span class="px-sm">发布在</span>
-            <a href="{{item.href}}" target="_blank">{{item.name}}</a>
-            <time class="pl-md text-grey" title="{{item.createTime}}">{{item.createTime | _date}}</time>
+          <div class="width-md">
+            <div class="d-flex text-grey-dark">
+              <div class="flex-1">
+                作者
+                <p>{{item.author}}</p>
+              </div>
+              <div class="text-right">
+                开始时间
+                <p>{{item.createTime | _date}}</p>
+              </div>
+            </div>
+            <nz-progress [nzPercent]="item.readings > 100 ? 100 : item.readings" [nzStatus]="item.status" [nzStrokeWidth]="6"></nz-progress>
           </div>
         </ng-template>
       </nz-list-item>
     </ng-template>
-    <ng-template #loadMore>
-      <div class="text-center mt-md">
-        <button nz-button (click)="queryPolicies()" [nzLoading]="loading" [nzType]="'dashed'" style="min-width:200px;">加载更多</button>
-      </div>
+    <ng-template #pagination>
+      <nz-pagination [nzTotal]="50" [nzPageSize]="5" (nzPageIndexChange)="getData()"></nz-pagination>
     </ng-template>
   </nz-list>
 </nz-card>

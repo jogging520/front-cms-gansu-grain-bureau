@@ -4,7 +4,7 @@ import { PolicyListComponent } from './list/list.component';
 
 const routes: Routes = [
 
-  { path: 'list', component: PolicyListComponent }];
+  { path: 'list', component: PolicyListComponent, data: { title: '政策列表' } }];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
