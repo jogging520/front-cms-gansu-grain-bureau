@@ -94,6 +94,10 @@ export const CONSTANT_COMMON_HEART_BEAT_INTERVAL:number                         
  */
 export const CONSTANT_COMMON_YESTERDAY_MICRO_SECOND: number                            = 86400000;  //一天的毫秒数
 
+/**
+ * 颜色定义
+ */
+export const CONSTANT_COMMON_COMPONENT_TAG_COLORS: string[]                             = ['#f50', '#2db7f5', '#87d068', '#108ee9'];// 标签的颜色
 
 
 /**
