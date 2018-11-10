@@ -25,8 +25,6 @@ export class PolicyListComponent implements OnInit {
 
   ngOnInit() {
     this.queryPolicies();
-
-    console.log(this.policies);
   }
 
   public queryPolicies() {
@@ -36,7 +34,6 @@ export class PolicyListComponent implements OnInit {
       .pipe(flatMap((policy) => policy))
       .subscribe((policy: Policy) => {
         if (policy.status == PolicyConstants.CONSTANT_MODULE_POLICY_MODEL_USER_STATUS_ACTIVE) {
-          console.log(policy);
           this.policies.push(policy);
         }},
         () => {catchError(error => this.commonService.handleError(error));
