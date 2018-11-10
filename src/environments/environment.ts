@@ -5,7 +5,7 @@
 export const environment = {
   serverUrl:          `http://117.157.24.67:9001/`,
   webSocketUrl:       `ws://117.157.24.67:9001/`,
-  production:         false,
+  production:         true,
   useHash:            true,
   hmr:                false,
   appType:            'cms',

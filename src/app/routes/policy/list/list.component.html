@@ -61,33 +61,44 @@
             </ul>
           </nz-dropdown>
         </ng-template>
-        <nz-list-item-meta [nzTitle]="nzTitle" [nzDescription]="item.subDescription" [nzAvatar]="nzAvatar">
+        <nz-list-item-meta [nzTitle]="nzTitle" [nzDescription]="nzDescription" [nzAvatar]="nzAvatar">
           <ng-template #nzTitle>
-            <a href="{{item.name}}" target="_blank">{{item.name}}</a>
+            <h3>{{item.name}}</h3>
           </ng-template>
           <ng-template #nzAvatar>
-            <nz-avatar [nzSrc]="item.logo" nzSize="large" [nzShape]="'square'"></nz-avatar>
+            <nz-avatar [nzText]="item.description[0]" nzSize="large" [nzShape]="'square'"
+                       [ngStyle]="{'background-color':'#722ED1'}" style="vertical-align: middle;"></nz-avatar>
+          </ng-template>
+          <ng-template #nzDescription>
+            <nz-tag [nzColor]="colors[i%colors.length]"
+                    *ngFor="let keyword of item.keywords;let i = index">
+              {{keyword}}</nz-tag>
           </ng-template>
         </nz-list-item-meta>
         <ng-template #nzContent>
           <div class="width-md">
             <div class="d-flex text-grey-dark">
               <div class="flex-1">
-                作者
-                <p>{{item.author}}</p>
+                阅读量
+                <p>
+                  <nz-tag [nzColor]="'red'"><i nz-icon type="file-text" theme="outline"></i>{{item.readings}}</nz-tag>
+                </p>
+              </div>
+              <div class="flex-1">
+                发表人
+                <p><nz-tag [nzColor]="'purple'"><i nz-icon type="user" theme="outline"></i>{{item.author}}</nz-tag></p>
               </div>
               <div class="text-right">
-                开始时间
+                发表时间
                 <p>{{item.createTime | _date}}</p>
               </div>
             </div>
-            <nz-progress [nzPercent]="item.readings > 100 ? 100 : item.readings" [nzStatus]="item.status" [nzStrokeWidth]="6"></nz-progress>
           </div>
         </ng-template>
       </nz-list-item>
     </ng-template>
     <ng-template #pagination>
-      <nz-pagination [nzTotal]="50" [nzPageSize]="5" (nzPageIndexChange)="getData()"></nz-pagination>
+      <nz-pagination [nzTotal]="50" [nzPageSize]="5" (nzPageIndexChange)="queryPolicies()"></nz-pagination>
     </ng-template>
   </nz-list>
 </nz-card>
