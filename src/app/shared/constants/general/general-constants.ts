@@ -16,7 +16,6 @@ export const CONSTANT_COMMON_HTTP_PARAM_PUBLIC_CATEGORY: string                 
 export const CONSTANT_COMMON_HTTP_PARAM_PUBLIC_SESSION: string                         = 'session';    //HTTP请求参数中公共会话编号定义常量
 export const CONSTANT_COMMON_HTTP_PARAM_PUBLIC_USER: string                            = 'user';    //HTTP请求参数中公共用户编号定义常量
 export const CONSTANT_COMMON_HTTP_PARAM_PUBLIC_TOKEN: string                           = 'token';    //HTTP请求参数中公共令牌定义常量
-export const CONSTANT_COMMON_HTTP_PARAM_PUBLIC_POLICY: string                          = 'cms/policies';    //HTTP请求参数中公共用户编号定义常量
 
 export const CONSTANT_COMMON_HTTP_RESPONSE_TYPE_BLOB: 'text' | 'blob' | 'arraybuffer' | 'json'  = 'blob';    //HTTP请求选项中字符流（图片）定义常量
 
@@ -60,6 +59,7 @@ export const CONSTANT_COMMON_ROUTE_PATH_FORBIDDEN: string                       
 export const CONSTANT_COMMON_ROUTE_PATH_NOT_FOUND: string                              = '404'; //未找到路由的path路径
 export const CONSTANT_COMMON_ROUTE_PATH_SERVER_INTERNAL_ERROR: string                  = '500'; //服务器内部错误路由的path路径
 export const CONSTANT_COMMON_ROUTE_PATH_CALL_BACK: string                              = 'callback'; //回调路由的path路径
+export const CONSTANT_COMMON_ROUTE_PATH_POLICY: string                                 = 'cms/policies';    //HTTP请求参数中公共用户编号定义常量
 
 /**
  * 权限定义

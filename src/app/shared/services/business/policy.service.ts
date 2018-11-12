@@ -20,7 +20,7 @@ export class PolicyService {
 
   public queryPolices(name?: string): Observable<Policy[]> {
     return this.httpClient
-      .get(`${environment.serverUrl}${GeneralConstants.CONSTANT_COMMON_HTTP_PARAM_PUBLIC_POLICY}`,
+      .get(`${environment.serverUrl}${GeneralConstants.CONSTANT_COMMON_ROUTE_PATH_POLICY}`,
         {name: name}
       )
       .pipe(
