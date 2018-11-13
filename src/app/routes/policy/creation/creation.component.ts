@@ -8,6 +8,8 @@ import {Policy} from "@shared/models/business/policy";
 import {environment} from "@env/environment";
 import {CommonService} from "@shared/services/general/common.service";
 import {flatMap} from "rxjs/internal/operators";
+import {User} from "@shared/models/general/user";
+import {SessionService} from "@shared/services/general/session.service";
 
 @Component({
   selector: 'app-policy-creation',
@@ -24,12 +26,14 @@ export class PolicyCreationComponent implements OnInit {
   gradeOptions: any[] = [
     {name: '一级', value: 'first'}, {name: '二级', value: 'second'}];
   keywordsOptions: any[] = [];
+  author: User;
 
 
   constructor(private formBuilder: FormBuilder,
-              private  msg: NzMessageService,
+              private msg: NzMessageService,
               private policyService: PolicyService,
-              private commonService: CommonService) { }
+              private commonService: CommonService,
+              private sessionService: SessionService) { }
 
   ngOnInit() {
     this.policyForm = this.formBuilder.group({
@@ -40,6 +44,10 @@ export class PolicyCreationComponent implements OnInit {
       keywords: [null, [Validators.required]],
       description: [null, [Validators.required]],
     });
+
+    this.sessionService
+      .currentUser
+      .subscribe((user) => this.author = user);
   }
 
   submit() {
@@ -57,7 +65,7 @@ export class PolicyCreationComponent implements OnInit {
       name: this.policyForm.controls.name.value,
       grade: this.policyForm.controls.grade.value,
       keywords: this.policyForm.controls.keywords.value,
-      author: '5b69899c54baf8343b69d4ea',
+      author: this.author,
       readings: 0,
       createTime: CommonService.currentDate(),
       timestamp: CommonService.currentDate(),
