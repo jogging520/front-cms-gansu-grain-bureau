@@ -1,0 +1,37 @@
+<page-header [title]="'基础表单'">
+  将一个冗长或用户不熟悉的表单任务分成多个步骤，指导用户完成。
+</page-header>
+<nz-card [nzBordered]="false">
+  <form nz-form [formGroup]="policyForm" (ngSubmit)="submit()" se-container="1" labelWidth="200">
+    <se label="类型" error="选择类型" required>
+      <nz-select style="width: 120px;" formControlName="type" nzAllowClear nzPlaceHolder="请选择">
+        <nz-option *ngFor="let option of typeOptions" [nzValue]="option.value" [nzLabel]="option.name"></nz-option>
+      </nz-select>
+    </se>
+    <se label="终端" error="选择终端" required>
+      <nz-select style="width: 100%" nzMode="tags" formControlName="appTypes" nzPlaceHolder="请输入并回车">
+        <nz-option *ngFor="let option of appOptions" [nzLabel]="option.name" [nzValue]="option.value"></nz-option>
+      </nz-select>
+    </se>
+    <se label="标题" error="请输入标题" required>
+      <input nz-input formControlName="name" placeholder="请输入政策名称">
+    </se>
+    <se label="级别" error="选择等级" required>
+      <nz-select style="width: 120px;" formControlName="grade" nzAllowClear nzPlaceHolder="请选择">
+        <nz-option *ngFor="let option of gradeOptions" [nzValue]="option.value" [nzLabel]="option.name"></nz-option>
+      </nz-select>
+    </se>
+    <se label="关键词" error="选择等级" required>
+      <nz-select style="width: 100%" nzMode="tags" formControlName="keywords" nzPlaceHolder="请输入并回车">
+        <nz-option *ngFor="let option of keywordsOptions" [nzLabel]="option.name" [nzValue]="option.value"></nz-option>
+      </nz-select>
+    </se>
+    <se label="内容" error="输入内容" required>
+      <textarea rows="4" nz-input formControlName="description"></textarea>
+    </se>
+    <se>
+      <button nz-button nzType="primary" [disabled]="policyForm.invalid" type="submit" [nzLoading]="submitting">提交</button>
+      <button nz-button class="ml-sm">保存</button>
+    </se>
+  </form>
+</nz-card>

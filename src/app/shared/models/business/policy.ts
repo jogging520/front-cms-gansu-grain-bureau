@@ -1,5 +1,5 @@
 export class Policy {
-  id:   string;
+  id?:   string;
   type: string;
   appTypes: string[];
   category: string;

@@ -6,7 +6,7 @@ import * as PolicyConstants from "@shared/constants/business/policy-constants";
 import {catchError, flatMap, map} from "rxjs/internal/operators";
 import {CommonService} from "@shared/services/general/common.service";
 import * as GeneralConstants from "@shared/constants/general/general-constants";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {User} from "@shared/models/general/user";
 
 
@@ -27,6 +27,7 @@ export class PolicyListComponent implements OnInit {
   colors: string[] = GeneralConstants.CONSTANT_COMMON_COMPONENT_TAG_COLORS;
 
   constructor(private activatedRoute: ActivatedRoute,
+              private router: Router,
               private policyService: PolicyService,
               private commonService: CommonService){
     this.activatedRoute
@@ -61,6 +62,10 @@ export class PolicyListComponent implements OnInit {
         () => {catchError(error => this.commonService.handleError(error));
           this.loading = false;},
         () => this.loading = false)
+  }
+
+  openEdit(): void {
+    this.router.navigate([GeneralConstants.CONSTANT_COMMON_ROUTE_POLICY_CREATION]).catch();
   }
 
 }

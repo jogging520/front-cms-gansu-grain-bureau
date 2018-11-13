@@ -27,4 +27,14 @@ export class PolicyService {
         catchError(error => this.commonService.handleError(error))
       );
   }
+
+
+  public createPolicies(policies: Policy[]): Observable<Policy[]> {
+    return this.httpClient
+      .post(`${environment.serverUrl}${GeneralConstants.CONSTANT_COMMON_ROUTE_PATH_POLICY}`,
+        policies)
+      .pipe(
+        catchError(error => this.commonService.handleError(error))
+      );
+  }
 }

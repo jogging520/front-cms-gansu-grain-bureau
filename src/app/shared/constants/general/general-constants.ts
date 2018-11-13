@@ -36,6 +36,7 @@ export const CONSTANT_COMMON_CACHE_ACTIVE_TIME: string                          
 export const CONSTANT_COMMON_ROUTE_ROOT: string                                        = '/';    //根路由定义常量
 export const CONSTANT_COMMON_ROUTE_LOGIN: string                                       = '/passport/login';    //登录路由定义常量
 export const CONSTANT_COMMON_ROUTE_USER_CREATION: string                               = '/system/user-creation';    //创建用户路由定义常量
+export const CONSTANT_COMMON_ROUTE_POLICY_CREATION: string                               = '/policy/policy-creation';    //创建用户路由定义常量
 export const CONSTANT_COMMON_ROUTE_INTERNAL_SERVER_ERROR: string                       = '/500';    //服务器内部错误路由定义常量
 
 
