@@ -202,6 +202,14 @@ export class CommonService {
   }
 
   /**
+   * 方法：获取当前时间
+   * @return {number} 当前时间
+   */
+  public static current(): Date {
+    return new Date();
+  }
+
+  /**
    * 方法：获取当前时间的值
    * @return {number} 当前时间
    */

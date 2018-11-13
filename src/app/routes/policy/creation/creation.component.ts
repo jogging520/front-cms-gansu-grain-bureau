@@ -8,7 +8,6 @@ import {Policy} from "@shared/models/business/policy";
 import {environment} from "@env/environment";
 import {CommonService} from "@shared/services/general/common.service";
 import {flatMap} from "rxjs/internal/operators";
-import {User} from "@shared/models/general/user";
 import {SessionService} from "@shared/services/general/session.service";
 
 @Component({
@@ -26,7 +25,7 @@ export class PolicyCreationComponent implements OnInit {
   gradeOptions: any[] = [
     {name: '一级', value: 'first'}, {name: '二级', value: 'second'}];
   keywordsOptions: any[] = [];
-  author: User;
+  author: string;
 
 
   constructor(private formBuilder: FormBuilder,
@@ -47,7 +46,7 @@ export class PolicyCreationComponent implements OnInit {
 
     this.sessionService
       .currentUser
-      .subscribe((user) => this.author = user);
+      .subscribe((user) => this.author = user.id);
   }
 
   submit() {
@@ -67,8 +66,8 @@ export class PolicyCreationComponent implements OnInit {
       keywords: this.policyForm.controls.keywords.value,
       author: this.author,
       readings: 0,
-      createTime: CommonService.currentDate(),
-      timestamp: CommonService.currentDate(),
+      createTime: CommonService.current(),
+      timestamp: CommonService.current(),
       status: 'ACTIVE',
       serialNo: serialNo,
       description: this.policyForm.controls.description.value
